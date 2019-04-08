@@ -52,13 +52,20 @@ simulate  {
             { 
 
             int errorCount = 0                                                                    
+            String receivedString =""
             String rec = ""
             for(int ss: final_rxNtf.data)
             {
-             rec = rec + (char)ss
-             if((char)ss == '^')
-             errorCount++
+             receivedString = receivedString + (char)ss
             }
+
+
+            Reciever MyReciever = new Reciever()
+            //Using Reciever to check and verify the recieved String from node 2 according to the used pattern
+            rec = MyReciever.DoCheck(receivedString)
+            errorCount = MyReciever.Errors                                                        //error counter
+            
+
             int ind = rec.indexOf('\n')
             String message = rec.substring(0,ind)
             Thread.sleep(3000) 
@@ -86,8 +93,8 @@ simulate  {
             REmodel.enable()
             REmodel.DoCorrupt()
 
-            //checking at node3
-            String errored = new Reciever().check(REmodel.Sent_List_Packets)
+            //Sendable String
+            String errored = REmodel.GenerateSendableString()
 
             Thread.sleep(3000)
             println "This is node2: \nDetails of Message received are as follows:\nData Received: "+rxNtf.data+"\nThe recieved message is - " + rec+"\nSender Address: "+1

@@ -118,5 +118,18 @@ class RecieveListErrorModel {
         }
     }
 
+    String GenerateSendableString()
+    {
+        String sendable=""
+        for(String iter: Sent_List_Packets)
+        {
+            int a1,a2,a3
+            a1 = Integer.parseInt(iter.substring(0,6),2)
+            a2 = Integer.parseInt(iter.substring(6,11),2)
+            a3 = Integer.parseInt(iter.substring(11,16),2)
+            sendable = sendable+ (char)a1+(char)a2+(char)a3
+        }
+        return sendable
+    }
 
 }
