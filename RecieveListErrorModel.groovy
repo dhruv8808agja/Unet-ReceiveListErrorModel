@@ -8,7 +8,7 @@ class RecieveListErrorModel {
     int size
     def m_times_invoked
 
-    def m_enable
+    public static def m_enable = true
 
 
     //Check if error model is enabled or not
