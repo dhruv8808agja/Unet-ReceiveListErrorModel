@@ -4,7 +4,7 @@ class RecieveListErrorModel {
     List<String> Rec_List_Packets = new ArrayList<>()
     List<String> Sent_List_Packets = new ArrayList<>()
     List<Integer> m_packetList = new ArrayList<>()
-    double  error_rate = 0.3
+    public static double  error_rate = 0.3
     int size
     def m_times_invoked
 

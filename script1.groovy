@@ -15,14 +15,5 @@ sendString = { list = "helloworld", count = 1 ->
     }
 }
 
-enableM = { count = 1 ->
-  count.times{ 
-      RecieveListErrorModel.m_enable = true
-    }
-}
 
-disableM = { count = 1 ->
-  count.times{
-      RecieveListErrorModel.m_enable = false
-    }
-}
+

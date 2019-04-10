@@ -7,7 +7,7 @@ import static org.arl.unet.phy.Physical.*
 import org.arl.unet.sim.*
 
 
-class PingDaemon extends UnetAgent {
+class MyAgent extends UnetAgent {
   private AgentID node
   private AgentID phy
   public int addr
@@ -33,23 +33,20 @@ class PingDaemon extends UnetAgent {
             rec = rec + (char)ss
 
             String errored = rec
-
-            if(RecieveListErrorModel.m_enable)
-            {
-              Sender sender = new Sender()
+             Sender sender = new Sender()
             RecieveListErrorModel REmodel = sender.send(rec)
             // REmodel.enable()
             REmodel.DoCorrupt()
 
 
             System.out.println "This is node2: \nDetails of Message received are as follows:\nData Received: "+msg.data+"\nThe recieved message is - " + rec+"\nSender Address: "+1
-            System.out.println "Error is being induced at a rate of: "+REmodel.error_rate
+            System.out.println "Error is being induced at a rate of: "+RecieveListErrorModel.error_rate
 
             // System.out.println "\n_______________________________________________________\n"    
 
             //Sendable String
             errored = REmodel.GenerateSendableString()      
-            }
+          
               
             phy << new TxFrameReq(to: 3, type: DATA, data: errored)
 

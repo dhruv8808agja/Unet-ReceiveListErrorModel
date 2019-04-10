@@ -30,9 +30,7 @@ class Sender {
             list.add(bin)
 
         }
-        //print("The list delivered is  - ")
-        //println(list)
-       // REmodel.enable()
+      
         REmodel.SetList(list)
         return REmodel
 
